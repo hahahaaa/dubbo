@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcatProjectProperties>
+    <rootDir>/src/main/webapp</rootDir>
+    <exportSource>false</exportSource>
+    <reloadable>true</reloadable>
+    <redirectLogger>false</redirectLogger>
+    <updateXml>true</updateXml>
+    <warLocation></warLocation>
+    <extraInfo></extraInfo>
+    <webPath>ROOT</webPath>
+    <webClassPathEntries>
+        <webClassPathEntry>/dubbo-api/target/classes</webClassPathEntry>
+        <webClassPathEntry>/dubbo-api/target/test-classes</webClassPathEntry>
+        <webClassPathEntry>/dubbo-pojo/target/classes</webClassPathEntry>
+        <webClassPathEntry>/dubbo-pojo/target/test-classes</webClassPathEntry>
+        <webClassPathEntry>E:/work/Java/jdk1.6.0_45/jre/lib/charsets.jar</webClassPathEntry>
+        <webClassPathEntry>E:/work/Java/jdk1.6.0_45/jre/lib/ext/RXTXcomm.jar</webClassPathEntry>
+        <webClassPathEntry>E:/work/Java/jdk1.6.0_45/jre/lib/ext/dnsns.jar</webClassPathEntry>
+        <webClassPathEntry>E:/work/Java/jdk1.6.0_45/jre/lib/ext/localedata.jar</webClassPathEntry>
+        <webClassPathEntry>E:/work/Java/jdk1.6.0_45/jre/lib/ext/sunjce_provider.jar</webClassPathEntry>
+        <webClassPathEntry>E:/work/Java/jdk1.6.0_45/jre/lib/ext/sunmscapi.jar</webClassPathEntry>
+        <webClassPathEntry>E:/work/Java/jdk1.6.0_45/jre/lib/jce.jar</webClassPathEntry>
+        <webClassPathEntry>E:/work/Java/jdk1.6.0_45/jre/lib/jsse.jar</webClassPathEntry>
+        <webClassPathEntry>E:/work/Java/jdk1.6.0_45/jre/lib/resources.jar</webClassPathEntry>
+        <webClassPathEntry>E:/work/Java/jdk1.6.0_45/jre/lib/rt.jar</webClassPathEntry>
+        <webClassPathEntry>E:/work/Java/jre6/lib/tools.jar</webClassPathEntry>
+        <webClassPathEntry>E:/work/resp/junit/junit/3.8.1/junit-3.8.1.jar</webClassPathEntry>
+    </webClassPathEntries>
+</tomcatProjectProperties>

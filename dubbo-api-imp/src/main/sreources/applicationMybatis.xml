@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+http://www.springframework.org/schema/tx
+     http://www.springframework.org/schema/tx/spring-tx.xsd
+     http://www.springframework.org/schema/aop
+     http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+
+    <!-- 加载配置文件 -->
+    <!--<context:property-placeholder location="classpath*:db.properties" />-->
+    <bean id="configProperties"
+          class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath*:db.properties</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="ignoreResourceNotFound" value="false" />
+        <property name="properties" ref="configProperties" />
+    </bean>
+
+
+    <!-- 数据源 ,使用dbcp -->
+    <bean id="ds" class="com.alibaba.druid.pool.DruidDataSource" destroy-method="close">
+        <property name="driverClassName" value="${driverClassName}"/>
+        <property name="url" value="${url}"/>
+        <property name="username" value="${username}"/>
+        <property name="password" value="${password}"/>
+        <!-- <property name="maxPoolSize" value="${c3p0.pool.size.max}" /> <property name="minPoolSize" value="${c3p0.pool.size.min}"
+            /> <property name="initialPoolSize" value="${c3p0.pool.size.ini}" /> <property name="acquireIncrement"
+            value="${c3p0.pool.size.increment}" /> -->
+    </bean>
+    <!--配置mybatis的session工厂 -->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="ds" />
+        <property name="typeAliasesPackage" value="org.dubbo.pojo" />
+    </bean>
+
+    <!-- 扫描指定包下所有的接口 来相互匹配sql数据 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="org.dubbo.api.dao" />
+        <!-- 自动注入sqlSessionFactory -->
+    </bean>
+
+
+    <!-- 事物管理器 对mybatis操作数据库事物控制，spring使用Jdbc的事物控制类 -->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <!-- 数据源 dataSource在applicationContext-dao.xml中配置了 -->
+        <property name="dataSource" ref="ds"></property>
+    </bean>
+    <!--开启我们的 事务注解扫描 -->
+    <tx:annotation-driven transaction-manager="transactionManager"
+                          proxy-target-class="true" />
+
+
+</beans>

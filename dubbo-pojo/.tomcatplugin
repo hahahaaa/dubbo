@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomcatProjectProperties>
+    <rootDir>/</rootDir>
+    <exportSource>false</exportSource>
+    <reloadable>true</reloadable>
+    <redirectLogger>false</redirectLogger>
+    <updateXml>true</updateXml>
+    <warLocation></warLocation>
+    <extraInfo></extraInfo>
+    <webPath>ROOT</webPath>
+    <webClassPathEntries>
+        <webClassPathEntry>/dubbo-pojo/target/classes</webClassPathEntry>
+        <webClassPathEntry>/dubbo-pojo/target/test-classes</webClassPathEntry>
+        <webClassPathEntry>E:/work/resp/junit/junit/3.8.1/junit-3.8.1.jar</webClassPathEntry>
+    </webClassPathEntries>
+</tomcatProjectProperties>
